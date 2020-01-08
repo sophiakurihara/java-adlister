@@ -15,4 +15,3 @@ public class CountServlet extends HttpServlet {
         res.getWriter().println("The current count is: " + counter);
     }
 }
-
