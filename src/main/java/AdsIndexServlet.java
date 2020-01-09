@@ -6,11 +6,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet(name="AdIndexServlet", urlPatterns = "/ads")
-public class AdIndexServlet extends HttpServlet {
+@WebServlet(name="AdsIndexServlet", urlPatterns = "/ads")
+public class AdsIndexServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-        req.getRequestDispatcher("/ads/index.jsp");
+
+        req.setAttribute("ads", DaoFactory.getAdsDao().all());
+        req.getRequestDispatcher("/ads/index.jsp").forward(req,res);
     }
 }
