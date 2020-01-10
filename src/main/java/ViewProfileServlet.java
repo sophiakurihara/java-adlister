@@ -15,11 +15,10 @@ public class ViewProfileServlet extends HttpServlet {
 //        getting the information or attributes we currently have set on our
 //        session: isAdmin, username, password
         HttpSession session = request.getSession();
-        boolean isAdmin = (Boolean) session.getAttribute("isAdmin");
+        String username = (String) session.getAttribute("username");
 
-//        if they are not admin, redirect them to login
-//        if they are, show them their profile
-        if(!isAdmin){
+//        if they are not a logged in user, redirect them to the profile page
+        if(username == null){
             response.sendRedirect("/login");
             return;
         } else {
